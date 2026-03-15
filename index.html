@@ -631,6 +631,13 @@
       object-fit: cover;
       transition: transform 0.4s ease, opacity 0.3s;
       opacity: 0.9;
+      /* 픽셀아트 화질 깨짐 방지 */
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    .wg-thumb img.no-pixel {
+      image-rendering: auto;
     }
     .wg-card:hover .wg-thumb img { transform: scale(1.04); opacity: 1; }
 
@@ -742,7 +749,14 @@
       flex-shrink: 0;
       overflow: hidden;
     }
-    .wg-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .wg-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
     .wg-author-name {
       font-size: 0.78rem;
       color: var(--muted);
@@ -797,7 +811,7 @@
       backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex; align-items: center; justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
       opacity: 0; pointer-events: none;
       transition: opacity 0.25s;
     }
@@ -811,7 +825,8 @@
       border-radius: 16px;
       overflow: hidden;
       display: flex; flex-direction: column;
-      max-height: calc(100vh - 3rem);
+      height: calc(100vh - 2rem);
+      max-height: calc(100vh - 2rem);
       transform: scale(0.96) translateY(12px);
       transition: transform 0.25s;
       box-shadow: 0 32px 100px rgba(0,0,0,0.7);
@@ -849,11 +864,15 @@
       min-height: 0;
       position: relative;
       background: #000;
+      display: flex;
+      flex-direction: column;
     }
     .wg-modal-frame iframe {
-      width: 100%; height: 100%;
+      flex: 1;
+      width: 100%;
+      height: 100%;
       border: none;
-      min-height: 560px;
+      display: block;
     }
 
     .wg-modal-info {
@@ -917,8 +936,23 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* ── MOBILE TOUCH HINT ── */
+    .wg-touch-hint {
+      display: none;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
     @media (max-width: 768px) {
+      body { cursor: auto; }
+      #cursor, #cursor-ring { display: none; }
+      .wg-filter-btn, .wg-card, .wg-modal-btn, .wg-modal-close { cursor: pointer; }
+      .wg-touch-hint { display: block; }
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       #terminal-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
@@ -926,7 +960,8 @@
       .stats-inner { grid-template-columns: repeat(2,1fr); }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
       .changelog-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .wg-modal-frame iframe { min-height: 320px; }
+      .wg-modal { height: 100vh; max-height: 100vh; border-radius: 0; }
+      .wg-modal-backdrop { padding: 0; }
       .wg-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -1188,7 +1223,9 @@
     </div>
     <div class="wg-modal-frame">
       <iframe id="wg-iframe" src="" allowfullscreen
-        allow="autoplay; fullscreen; pointer-lock; keyboard-map; gamepad"></iframe>
+        allow="autoplay; fullscreen; pointer-lock; keyboard-map; gamepad; accelerometer; gyroscope; screen-wake-lock; xr-spatial-tracking"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-top-navigation-by-user-activation allow-modals"
+        style="touch-action: auto;"></iframe>
     </div>
     <div class="wg-modal-info">
       <span class="wg-modal-game-name" id="wg-modal-game-name"></span>
@@ -1199,6 +1236,7 @@
         <button class="wg-modal-btn wg-modal-btn-primary" id="wg-modal-fullscreen">⛶ 전체화면</button>
       </div>
     </div>
+    <div class="wg-touch-hint">화면을 터치해서 이동하세요!</div>
   </div>
 </div>
 
@@ -1260,8 +1298,21 @@ async function fetchGitHubStats() {
       document.getElementById(id)?.classList.remove('loading');
     });
   }
+  
+  // localStorage 헬퍼 (접근 불가할 때도 안전하게)
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch(e) {
+      try { return sessionStorage.getItem(key); } catch(e2) { return null; }
+    }
+  }
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, value); return true; } catch(e) {
+      try { sessionStorage.setItem(key, value); return true; } catch(e2) { return false; }
+    }
+  }
+  
   try {
-    const cached = sessionStorage.getItem(CACHE_KEY);
+    const cached = safeGet(CACHE_KEY);
     if (cached) {
       const { data, ts } = JSON.parse(cached);
       if (Date.now() - ts < CACHE_TTL) { applyStats(data.stars, data.forks, data.watchers); return; }
@@ -1286,7 +1337,7 @@ async function fetchGitHubStats() {
       page++;
     }
     applyStats(stars, forks, watchers);
-    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: { stars, forks, watchers }, ts: Date.now() }));
+    safeSet(CACHE_KEY, JSON.stringify({ data: { stars, forks, watchers }, ts: Date.now() }));
   } catch(err) { applyStats('?', '?', '?'); }
 }
 fetchGitHubStats();
@@ -1304,7 +1355,7 @@ document.addEventListener('mousemove', e => {
 
 // ★ 여기에 실제 games.json raw URL을 넣으세요 ★
 // 예: https://raw.githubusercontent.com/reders0412-rgb/<레포이름>/main/games.json
-const GAMES_JSON_URL = 'https://raw.githubusercontent.com/reders0412-rgb/Geekpiz-Homepage/refs/heads/main/games.json?token=GHSAT0AAAAAADW76WN2KU5VKHKSD2EQUWKK2NWOJYA';
+const GAMES_JSON_URL = 'https://raw.githubusercontent.com/reders0412-rgb/Geekpiz-Homepage/refs/heads/main/games.json?token=GHSAT0AAAAAADSC3JQGPX5AYLHVJM35X6OS2NWOUEQ';
 
 let allGames = [];
 let activeTag = 'all';
@@ -1332,7 +1383,7 @@ function buildGameCard(game) {
   ).join('');
 
   const thumbHtml = game.thumbnail
-    ? `<img src="${game.thumbnail}" alt="${game.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'wg-thumb-placeholder\\'><div class=\\'wg-thumb-icon\\'>🎮</div></div>'">`
+    ? `<img src="${game.thumbnail}" alt="${game.name}" loading="lazy" ${game.pixelArt === false ? 'class="no-pixel"' : ''} onerror="this.parentElement.innerHTML='<div class=\\'wg-thumb-placeholder\\'><div class=\\'wg-thumb-icon\\'>🎮</div></div>'">`
     : `<div class="wg-thumb-placeholder"><div class="wg-thumb-icon">🎮</div></div>`;
 
   const avatarHtml = game.authorAvatar
@@ -1492,10 +1543,22 @@ document.addEventListener('keydown', e => {
 });
 
 modalFullscr.addEventListener('click', () => {
-  const frame = modalIframe;
-  if (frame.requestFullscreen) frame.requestFullscreen();
-  else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
-  else if (frame.mozRequestFullScreen) frame.mozRequestFullScreen();
+  // 모바일에서는 모달 전체, 데스크탑에서는 iframe 전체화면
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const target = isMobile ? document.querySelector('.wg-modal') : modalIframe;
+  
+  const requestFS = target.requestFullscreen
+    || target.webkitRequestFullscreen
+    || target.mozRequestFullScreen
+    || target.msRequestFullscreen;
+  
+  if (requestFS) {
+    requestFS.call(target).catch(err => {
+      // fallback: iframe만 시도
+      const fallback = modalIframe.requestFullscreen || modalIframe.webkitRequestFullscreen;
+      if (fallback) fallback.call(modalIframe);
+    });
+  }
 });
 </script>
 </body>
