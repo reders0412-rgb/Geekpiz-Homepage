@@ -24,9 +24,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -57,15 +55,12 @@
       opacity: 0.5;
     }
 
-    /* Noise overlay */
     body::before {
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none; z-index: 1; opacity: 0.6;
     }
-
-    /* Grid bg */
     body::after {
       content: '';
       position: fixed; inset: 0;
@@ -85,7 +80,6 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 2rem;
@@ -95,7 +89,6 @@
       text-decoration: none;
     }
     .nav-logo span { color: var(--accent2); }
-
     .nav-links {
       display: flex; align-items: center; gap: 2.4rem;
       list-style: none;
@@ -109,7 +102,6 @@
       letter-spacing: 0.04em;
     }
     .nav-links a:hover { color: var(--accent); }
-
     .nav-cta {
       padding: 0.5rem 1.4rem;
       background: transparent;
@@ -132,7 +124,6 @@
       padding: 8rem 2rem 4rem;
       position: relative; z-index: 2;
     }
-
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.35rem 1rem;
@@ -151,12 +142,10 @@
       border-radius: 50%;
       animation: pulse 1.8s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.7); }
     }
-
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(5rem, 14vw, 11rem);
@@ -173,7 +162,6 @@
       background-clip: text;
       filter: drop-shadow(0 0 32px rgba(0,245,196,0.4));
     }
-
     .hero-sub {
       margin-top: 2rem;
       font-size: 1.1rem;
@@ -182,13 +170,11 @@
       line-height: 1.7;
       animation: fadeUp 0.7s 0.2s ease both;
     }
-
     .hero-actions {
       display: flex; gap: 1rem; margin-top: 2.8rem;
       flex-wrap: wrap; justify-content: center;
       animation: fadeUp 0.7s 0.3s ease both;
     }
-
     .btn-primary {
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.9rem 2rem;
@@ -205,7 +191,6 @@
       transform: translateY(-2px);
       box-shadow: 0 0 48px rgba(0,245,196,0.55);
     }
-
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.9rem 2rem;
@@ -221,7 +206,6 @@
       border-color: var(--accent2);
       background: rgba(123,97,255,0.08);
     }
-
     .hero-scroll {
       margin-top: 5rem;
       display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
@@ -244,8 +228,6 @@
       51% { transform-origin: bottom; }
       100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
     }
-
-    /* ── GLOW ORBS ── */
     .orb {
       position: absolute;
       border-radius: 50%;
@@ -276,7 +258,6 @@
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 2rem; text-align: center;
     }
-    .stat-item {}
     .stat-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 3rem;
@@ -292,11 +273,7 @@
       letter-spacing: 0.06em;
     }
 
-    /* ── DOWNLOAD ── */
-    #download {
-      position: relative; z-index: 2;
-      padding: 6rem 4rem;
-    }
+    /* ── SECTION COMMON ── */
     .section-tag {
       font-family: 'Space Mono', monospace;
       font-size: 0.75rem;
@@ -319,6 +296,11 @@
       margin-bottom: 3rem;
     }
 
+    /* ── DOWNLOAD ── */
+    #download {
+      position: relative; z-index: 2;
+      padding: 6rem 4rem;
+    }
     .dl-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -349,10 +331,7 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
-    .dl-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
+    .dl-icon { font-size: 2rem; line-height: 1; }
     .dl-os {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.4rem;
@@ -382,7 +361,6 @@
       background: var(--bg2);
     }
     .features-header { margin-bottom: 3.5rem; }
-
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -412,17 +390,8 @@
     .fi-red { background: rgba(255,77,109,0.12); }
     .fi-yellow { background: rgba(255,200,0,0.12); }
     .fi-orange { background: rgba(255,125,0,0.12); }
-
-    .feature-title {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-    }
-    .feature-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
+    .feature-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.6rem; }
+    .feature-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
 
     /* ── TERMINAL ── */
     #terminal-section {
@@ -453,10 +422,7 @@
     .t-red { background: #ff5f57; }
     .t-yellow { background: #febc2e; }
     .t-green { background: #28c840; }
-    .terminal-title {
-      font-size: 0.75rem; color: var(--muted);
-      margin-left: auto; margin-right: auto;
-    }
+    .terminal-title { font-size: 0.75rem; color: var(--muted); margin-left: auto; margin-right: auto; }
     .terminal-body { padding: 1.4rem; font-size: 0.82rem; line-height: 1.9; }
     .t-prompt { color: var(--accent); }
     .t-cmd { color: var(--text); }
@@ -494,35 +460,18 @@
       background: radial-gradient(circle at 50% 0%, rgba(123,97,255,0.12) 0%, transparent 60%);
       pointer-events: none;
     }
-    .github-logo {
-      font-size: 4rem; margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 24px rgba(123,97,255,0.5));
-    }
+    .github-logo { font-size: 4rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 24px rgba(123,97,255,0.5)); }
     .github-card h3 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 2rem;
       margin-bottom: 0.8rem;
       letter-spacing: 0.06em;
     }
-    .github-card p {
-      color: var(--muted); font-size: 0.95rem;
-      line-height: 1.7; margin-bottom: 2rem;
-    }
-    .github-stats {
-      display: flex; justify-content: center; gap: 2.5rem;
-      margin-bottom: 2rem;
-    }
+    .github-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+    .github-stats { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 2rem; }
     .gh-stat { text-align: center; }
-    .gh-stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem; color: var(--accent2);
-    }
-    .gh-stat-label {
-      font-size: 0.75rem; color: var(--muted);
-      font-family: 'Space Mono', monospace;
-    }
-
-    /* ── GITHUB LIVE STATS ── */
+    .gh-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent2); }
+    .gh-stat-label { font-size: 0.75rem; color: var(--muted); font-family: 'Space Mono', monospace; }
     .gh-live-badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.25rem 0.75rem;
@@ -534,17 +483,8 @@
       color: var(--accent);
       margin-bottom: 1.5rem;
     }
-    .gh-live-dot {
-      width: 5px; height: 5px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 1.8s infinite;
-    }
-    .github-stats-row {
-      display: flex; justify-content: center;
-      gap: 1.2rem; margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
+    .gh-live-dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: pulse 1.8s infinite; }
+    .github-stats-row { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 2rem; flex-wrap: wrap; }
     .gh-pill {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.55rem 1.2rem;
@@ -557,26 +497,11 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       text-decoration: none;
     }
-    .gh-pill:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 14px var(--glow);
-    }
+    .gh-pill:hover { border-color: var(--accent); box-shadow: 0 0 14px var(--glow); }
     .gh-pill .gh-icon { font-size: 1rem; }
-    .gh-pill .gh-count {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-    }
-    .gh-pill.loading .gh-count {
-      opacity: 0.4;
-      animation: loadPulse 1s infinite;
-    }
-    @keyframes loadPulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.9; }
-    }
-    /* hero badge github stats */
+    .gh-pill .gh-count { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--accent); letter-spacing: 0.04em; }
+    .gh-pill.loading .gh-count { opacity: 0.4; animation: loadPulse 1s infinite; }
+    @keyframes loadPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
     .hero-gh-stats {
       display: inline-flex; align-items: center; gap: 1rem;
       margin-top: 1.2rem;
@@ -612,34 +537,360 @@
       border-bottom: 1px solid var(--border);
     }
     .changelog-item:last-child { border-bottom: none; }
-    .cl-version {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--accent);
-      padding-top: 0.2rem;
+    .cl-version { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--accent); padding-top: 0.2rem; }
+    .cl-date { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; font-family: 'Space Mono', monospace; }
+    .cl-title { font-weight: 600; font-size: 0.97rem; margin-bottom: 0.6rem; }
+    .cl-items { list-style: none; }
+    .cl-items li { font-size: 0.85rem; color: var(--muted); padding: 0.2rem 0; display: flex; align-items: flex-start; gap: 0.6rem; }
+    .cl-items li::before { content: '→'; color: var(--accent2); flex-shrink: 0; }
+
+    /* ══════════════════════════════════════
+       ── WEB GAMES SECTION ──
+    ══════════════════════════════════════ */
+    #webgames {
+      position: relative; z-index: 2;
+      padding: 6rem 4rem;
+      background: var(--bg);
     }
-    .cl-date {
+    .webgames-header {
+      margin-bottom: 3rem;
+    }
+
+    /* 필터 태그 */
+    .wg-filters {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .wg-filter-btn {
+      padding: 0.38rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      cursor: none;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .wg-filter-btn:hover,
+    .wg-filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,245,196,0.06);
+    }
+
+    /* 게임 그리드 */
+    .wg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+      max-width: 1200px;
+    }
+
+    /* 게임 카드 */
+    .wg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: none;
+      position: relative;
+    }
+    .wg-card:hover {
+      border-color: rgba(0,245,196,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 24px rgba(0,245,196,0.06);
+    }
+    /* 상단 색상 바 */
+    .wg-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+      z-index: 1;
+    }
+    .wg-card:hover::before { transform: scaleX(1); }
+
+    /* 썸네일 영역 */
+    .wg-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+    }
+    .wg-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, opacity 0.3s;
+      opacity: 0.9;
+    }
+    .wg-card:hover .wg-thumb img { transform: scale(1.04); opacity: 1; }
+
+    /* 썸네일 없을 때 placeholder */
+    .wg-thumb-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--bg2) 0%, #0a1020 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .wg-thumb-placeholder::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,245,196,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,196,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .wg-thumb-icon {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 0 16px rgba(0,245,196,0.3));
+      position: relative; z-index: 1;
+    }
+
+    /* 플레이 오버레이 */
+    .wg-play-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(8,12,18,0.7);
+      opacity: 0;
+      transition: opacity 0.25s;
+      backdrop-filter: blur(2px);
+      z-index: 2;
+    }
+    .wg-card:hover .wg-play-overlay { opacity: 1; }
+    .wg-play-btn {
+      width: 56px; height: 56px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: #000;
+      transform: scale(0.85);
+      transition: transform 0.2s;
+      box-shadow: 0 0 32px rgba(0,245,196,0.5);
+    }
+    .wg-card:hover .wg-play-btn { transform: scale(1); }
+
+    /* 카드 본문 */
+    .wg-body {
+      padding: 1.4rem 1.6rem 1.6rem;
+    }
+    .wg-meta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+    .wg-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .wg-tag {
+      padding: 0.18rem 0.55rem;
+      background: rgba(123,97,255,0.12);
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: 100px;
+      font-size: 0.66rem;
+      color: var(--accent2);
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.03em;
+    }
+    .wg-version {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.66rem;
+      color: var(--muted);
+    }
+    .wg-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .wg-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 카드 하단 (작성자 + 날짜) */
+    .wg-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .wg-author {
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .wg-avatar {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #000;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .wg-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .wg-author-name {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+    }
+    .wg-date {
       font-size: 0.72rem;
       color: var(--muted);
-      margin-top: 0.3rem;
       font-family: 'Space Mono', monospace;
     }
-    .cl-title {
-      font-weight: 600; font-size: 0.97rem;
-      margin-bottom: 0.6rem;
-    }
-    .cl-items { list-style: none; }
-    .cl-items li {
-      font-size: 0.85rem;
+
+    /* 로딩 / 에러 상태 */
+    .wg-loading {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      padding: 5rem 2rem;
       color: var(--muted);
-      padding: 0.2rem 0;
-      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
     }
-    .cl-items li::before {
-      content: '→';
-      color: var(--accent2);
+    .wg-spinner {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .wg-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .wg-error-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.5; }
+    .wg-error-msg { color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.82rem; margin-bottom: 0.6rem; }
+    .wg-error-hint { color: var(--border); font-family: 'Space Mono', monospace; font-size: 0.72rem; word-break: break-all; }
+
+    .wg-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    /* ── 게임 모달 (인게임 플레이어) ── */
+    .wg-modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(4,6,12,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .wg-modal-backdrop.open {
+      opacity: 1; pointer-events: all;
+    }
+    .wg-modal {
+      width: 100%; max-width: 1100px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      max-height: calc(100vh - 3rem);
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.25s;
+      box-shadow: 0 32px 100px rgba(0,0,0,0.7);
+    }
+    .wg-modal-backdrop.open .wg-modal { transform: scale(1) translateY(0); }
+
+    .wg-modal-header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
       flex-shrink: 0;
     }
+    .wg-modal-dots { display: flex; gap: 6px; }
+    .wg-modal-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .wg-modal-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex: 1;
+      text-align: center;
+    }
+    .wg-modal-close {
+      background: none; border: none;
+      color: var(--muted); font-size: 1.1rem;
+      cursor: none; padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+      font-family: 'Space Mono', monospace;
+    }
+    .wg-modal-close:hover { color: var(--accent3); background: rgba(255,77,109,0.1); }
+
+    .wg-modal-frame {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      background: #000;
+    }
+    .wg-modal-frame iframe {
+      width: 100%; height: 100%;
+      border: none;
+      min-height: 560px;
+    }
+
+    .wg-modal-info {
+      padding: 1rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .wg-modal-game-name {
+      font-weight: 600; font-size: 0.95rem;
+    }
+    .wg-modal-actions { display: flex; gap: 0.6rem; }
+    .wg-modal-btn {
+      padding: 0.42rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: 'Space Mono', monospace;
+      text-decoration: none;
+      cursor: none;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .wg-modal-btn-primary {
+      background: var(--accent);
+      color: #000;
+      border: none;
+    }
+    .wg-modal-btn-primary:hover { box-shadow: 0 0 16px rgba(0,245,196,0.4); }
+    .wg-modal-btn-ghost {
+      background: none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .wg-modal-btn-ghost:hover { border-color: var(--accent2); color: var(--text); }
 
     /* ── FOOTER ── */
     footer {
@@ -649,25 +900,11 @@
       display: flex; align-items: center; justify-content: space-between;
       background: var(--bg2);
     }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
-    .footer-links {
-      display: flex; gap: 2rem; list-style: none;
-    }
-    .footer-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--accent); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy {
-      font-size: 0.8rem; color: var(--muted);
-      font-family: 'Space Mono', monospace;
-    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); font-family: 'Space Mono', monospace; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -678,25 +915,24 @@
       opacity: 0; transform: translateY(32px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1; transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       #terminal-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
-      #download, #features, #github, #changelog { padding: 4rem 1.5rem; }
+      #download, #features, #github, #changelog, #webgames { padding: 4rem 1.5rem; }
       .stats-inner { grid-template-columns: repeat(2,1fr); }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; }
       .changelog-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .wg-modal-frame iframe { min-height: 320px; }
+      .wg-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
@@ -705,6 +941,7 @@
   <a href="#" class="nav-logo">Geek<span>piz</span></a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
+    <li><a href="#webgames">Web Games</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="#changelog">Changelog</a></li>
     <li><a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="nav-cta">GitHub ↗</a></li>
@@ -724,44 +961,34 @@
   </h1>
   <p class="hero-sub">빠르고 강력하게 — 당신의 워크플로우를 한 단계 업그레이드하세요.</p>
   <div class="hero-actions">
-    <a href="#download" class="btn-primary">
-      ⬇ 런처 다운로드
-    </a>
-    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="btn-ghost">
-      GitHub 바로가기
-    </a>
+    <a href="#download" class="btn-primary">⬇ 런처 다운로드</a>
+    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="btn-ghost">GitHub 바로가기</a>
   </div>
-  <!-- Live GitHub Stats (hero) -->
   <div class="hero-gh-stats">
-    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill" id="hero-stars">
+    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill">
       Stars <strong id="hero-stars-count">—</strong>
     </a>
-    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill" id="hero-forks">
+    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill">
       Forks <strong id="hero-forks-count">—</strong>
     </a>
-    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill" id="hero-watchers">
+    <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="hero-gh-pill">
       Watchers <strong id="hero-watchers-count">—</strong>
     </a>
   </div>
-
   <div class="hero-scroll">
     <span>SCROLL</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-
-
-
 <!-- DOWNLOAD -->
 <section id="download">
   <div class="section-tag">// DOWNLOAD</div>
   <h2 class="section-title">런처 다운로드</h2>
   <p class="section-sub">클릭 한 번으로 설치 끝.</p>
-
   <div class="dl-cards" style="max-width:320px;">
     <a href="https://github.com/reders0412-rgb/Geekpiz-launcher/releases/download/GeekpizLauncher/GeekpizLauncher.zip"
-       target="_blank" rel="noopener" class="dl-card">
+       class="dl-card">
       <div class="dl-icon" style="font-size:2.2rem;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="40" height="40">
           <rect x="2" y="2" width="40" height="40" rx="4" fill="#F25022"/>
@@ -845,6 +1072,30 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     WEB GAMES
+═══════════════════════════════════════ -->
+<section id="webgames">
+  <div class="webgames-header">
+    <div class="section-tag">// WEB GAMES</div>
+    <h2 class="section-title">웹에서 바로 플레이</h2>
+    <p class="section-sub">설치 없이 브라우저에서 바로 즐길 수 있는 긱피즈 게임, 앱들.</p>
+  </div>
+
+  <!-- 필터 버튼 (JS로 동적 생성) -->
+  <div class="wg-filters" id="wg-filters">
+    <button class="wg-filter-btn active" data-tag="all">ALL</button>
+  </div>
+
+  <!-- 게임 카드 그리드 -->
+  <div class="wg-grid" id="wg-grid">
+    <div class="wg-loading">
+      <div class="wg-spinner"></div>
+      <span>게임 목록 불러오는 중...</span>
+    </div>
+  </div>
+</section>
+
 <!-- GITHUB -->
 <section id="github">
   <div class="section-tag">// FREE</div>
@@ -857,17 +1108,14 @@
     </div>
     <div class="github-stats-row">
       <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="gh-pill loading" id="gh-pill-stars">
-        
         <span class="gh-count" id="gh-stars-count">–</span>
         <span>Stars</span>
       </a>
       <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="gh-pill loading" id="gh-pill-forks">
-        
         <span class="gh-count" id="gh-forks-count">–</span>
         <span>Forks</span>
       </a>
       <a href="https://github.com/reders0412-rgb" target="_blank" rel="noopener" class="gh-pill loading" id="gh-pill-watchers">
-        
         <span class="gh-count" id="gh-watchers-count">–</span>
         <span>Watchers</span>
       </a>
@@ -917,126 +1165,338 @@
   <div class="footer-logo">GEEKPIZ</div>
   <ul class="footer-links">
     <li><a href="#features">Features</a></li>
+    <li><a href="#webgames">Web Games</a></li>
     <li><a href="#download">Download</a></li>
     <li><a href="https://github.com/reders0412-rgb" target="_blank">GitHub</a></li>
-    <li><a href="https://github.com/reders0412-rgb" target="_blank">Docs</a></li>
     <li><a href="https://github.com/reders0412-rgb" target="_blank">Issues</a></li>
   </ul>
 </footer>
 
+<!-- ══════════════════════════════════════
+     게임 플레이 모달
+═══════════════════════════════════════ -->
+<div class="wg-modal-backdrop" id="wg-modal-backdrop">
+  <div class="wg-modal">
+    <div class="wg-modal-header">
+      <div class="wg-modal-dots">
+        <div class="wg-modal-dot t-red"></div>
+        <div class="wg-modal-dot t-yellow"></div>
+        <div class="wg-modal-dot t-green"></div>
+      </div>
+      <div class="wg-modal-title" id="wg-modal-title">Game</div>
+      <button class="wg-modal-close" id="wg-modal-close">✕</button>
+    </div>
+    <div class="wg-modal-frame">
+      <iframe id="wg-iframe" src="" allowfullscreen
+        allow="autoplay; fullscreen; pointer-lock; keyboard-map; gamepad"></iframe>
+    </div>
+    <div class="wg-modal-info">
+      <span class="wg-modal-game-name" id="wg-modal-game-name"></span>
+      <div class="wg-modal-actions">
+        <a href="#" id="wg-modal-newwin" target="_blank" rel="noopener" class="wg-modal-btn wg-modal-btn-ghost">
+          ↗ 새 탭에서 열기
+        </a>
+        <button class="wg-modal-btn wg-modal-btn-primary" id="wg-modal-fullscreen">⛶ 전체화면</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animateCursor() {
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animateCursor);
+// ── Custom Cursor ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.2)'; });
+  el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+});
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// ── Nav scroll ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(8,12,18,0.97)' : 'rgba(8,12,18,0.85)';
+});
+
+// ── GitHub Live Stats ──
+async function fetchGitHubStats() {
+  const username = 'reders0412-rgb';
+  const CACHE_KEY = 'gh_stats_cache';
+  const CACHE_TTL = 5 * 60 * 1000;
+  function formatNum(n) {
+    if (typeof n !== 'number') return n;
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
+    return String(n);
   }
-  animateCursor();
-  document.querySelectorAll('a,button').forEach(el => {
+  function applyStats(stars, forks, watchers) {
+    document.getElementById('hero-stars-count').textContent = formatNum(stars);
+    document.getElementById('hero-forks-count').textContent = formatNum(forks);
+    document.getElementById('hero-watchers-count').textContent = formatNum(watchers);
+    document.getElementById('gh-stars-count').textContent = formatNum(stars);
+    document.getElementById('gh-forks-count').textContent = formatNum(forks);
+    document.getElementById('gh-watchers-count').textContent = formatNum(watchers);
+    ['gh-pill-stars','gh-pill-forks','gh-pill-watchers'].forEach(id => {
+      document.getElementById(id)?.classList.remove('loading');
+    });
+  }
+  try {
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { data, ts } = JSON.parse(cached);
+      if (Date.now() - ts < CACHE_TTL) { applyStats(data.stars, data.forks, data.watchers); return; }
+    }
+  } catch(e) {}
+  try {
+    let page = 1, stars = 0, forks = 0, watchers = 0;
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
+        { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+      );
+      if (!res.ok) break;
+      const repos = await res.json();
+      if (!repos.length) break;
+      repos.forEach(r => {
+        stars    += r.stargazers_count || 0;
+        forks    += r.forks_count      || 0;
+        watchers += r.watchers_count   || 0;
+      });
+      if (repos.length < 100) break;
+      page++;
+    }
+    applyStats(stars, forks, watchers);
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: { stars, forks, watchers }, ts: Date.now() }));
+  } catch(err) { applyStats('?', '?', '?'); }
+}
+fetchGitHubStats();
+
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 30;
+  const y = (e.clientY / window.innerHeight - 0.5) * 30;
+  document.querySelector('.orb-1').style.transform = `translate(${x}px, ${y}px)`;
+  document.querySelector('.orb-2').style.transform = `translate(${-x}px, ${-y}px)`;
+});
+
+// ══════════════════════════════════════
+// WEB GAMES — GitHub JSON 불러오기
+// ══════════════════════════════════════
+
+// ★ 여기에 실제 games.json raw URL을 넣으세요 ★
+// 예: https://raw.githubusercontent.com/reders0412-rgb/<레포이름>/main/games.json
+const GAMES_JSON_URL = 'https://raw.githubusercontent.com/reders0412-rgb/geekpiz-games/main/games.json';
+
+let allGames = [];
+let activeTag = 'all';
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'short', day: 'numeric' });
+  } catch { return dateStr; }
+}
+
+function getInitials(name) {
+  if (!name) return 'G';
+  return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+}
+
+function buildGameCard(game) {
+  const card = document.createElement('div');
+  card.className = 'wg-card reveal';
+  card.dataset.tags = JSON.stringify(game.tags || []);
+
+  const tagsHtml = (game.tags || []).map(t =>
+    `<span class="wg-tag">${t}</span>`
+  ).join('');
+
+  const thumbHtml = game.thumbnail
+    ? `<img src="${game.thumbnail}" alt="${game.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'wg-thumb-placeholder\\'><div class=\\'wg-thumb-icon\\'>🎮</div></div>'">`
+    : `<div class="wg-thumb-placeholder"><div class="wg-thumb-icon">🎮</div></div>`;
+
+  const avatarHtml = game.authorAvatar
+    ? `<img src="${game.authorAvatar}" alt="${game.author}" onerror="this.parentElement.textContent='${getInitials(game.author)}'">`
+    : getInitials(game.author || 'Geekpiz');
+
+  card.innerHTML = `
+    <div class="wg-thumb">
+      ${thumbHtml}
+      <div class="wg-play-overlay">
+        <div class="wg-play-btn">▶</div>
+      </div>
+    </div>
+    <div class="wg-body">
+      <div class="wg-meta-row">
+        <div class="wg-tags">${tagsHtml}</div>
+        <span class="wg-version">${game.version ? 'v' + game.version : ''}</span>
+      </div>
+      <div class="wg-name">${game.name}</div>
+      <div class="wg-desc">${game.description || ''}</div>
+      <div class="wg-footer">
+        <div class="wg-author">
+          <div class="wg-avatar">${avatarHtml}</div>
+          <span class="wg-author-name">${game.author || 'Geekpiz'}</span>
+        </div>
+        <span class="wg-date">${formatDate(game.releaseDate)}</span>
+      </div>
+    </div>`;
+
+  card.addEventListener('click', () => openGameModal(game));
+  return card;
+}
+
+function renderGames(games) {
+  const grid = document.getElementById('wg-grid');
+  grid.innerHTML = '';
+
+  if (!games.length) {
+    grid.innerHTML = `<div class="wg-empty">이 카테고리에 게임이 없어요 👾</div>`;
+    return;
+  }
+
+  games.forEach((game, i) => {
+    const card = buildGameCard(game);
+    grid.appendChild(card);
+  });
+
+  // reveal 재등록
+  document.querySelectorAll('#wg-grid .reveal').forEach(el => {
+    observer.observe(el);
+  });
+
+  // 커서 이벤트 재등록
+  document.querySelectorAll('#wg-grid a, #wg-grid button, #wg-grid .wg-card').forEach(el => {
     el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.2)'; });
     el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
   });
+}
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+function buildFilters(games) {
+  const tagSet = new Set();
+  games.forEach(g => (g.tags || []).forEach(t => tagSet.add(t)));
 
-  // Nav active
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.background = window.scrollY > 50
-      ? 'rgba(8,12,18,0.97)' : 'rgba(8,12,18,0.85)';
+  const container = document.getElementById('wg-filters');
+  container.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'wg-filter-btn active';
+  allBtn.dataset.tag = 'all';
+  allBtn.textContent = 'ALL';
+  container.appendChild(allBtn);
+
+  tagSet.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'wg-filter-btn';
+    btn.dataset.tag = tag;
+    btn.textContent = tag;
+    container.appendChild(btn);
   });
 
-  // ── GitHub Live Stats ──
-  async function fetchGitHubStats() {
-    // 유저의 모든 public 레포를 가져와서 합산
-    const username = 'reders0412-rgb';
-    const CACHE_KEY = 'gh_stats_cache';
-    const CACHE_TTL = 5 * 60 * 1000; // 5분
+  container.addEventListener('click', e => {
+    const btn = e.target.closest('.wg-filter-btn');
+    if (!btn) return;
+    activeTag = btn.dataset.tag;
+    container.querySelectorAll('.wg-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = activeTag === 'all'
+      ? allGames
+      : allGames.filter(g => (g.tags || []).includes(activeTag));
+    renderGames(filtered);
+  });
 
-    function formatNum(n) {
-      if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-      return String(n);
+  // 커서 등록
+  container.querySelectorAll('.wg-filter-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.2)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+  });
+}
+
+async function loadGames() {
+  const grid = document.getElementById('wg-grid');
+  try {
+    const res = await fetch(GAMES_JSON_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    allGames = json.games || [];
+
+    if (!allGames.length) {
+      grid.innerHTML = `<div class="wg-empty">아직 웹 게임이 없어요. 곧 업데이트 예정!</div>`;
+      return;
     }
 
-    function applyStats(stars, forks, watchers) {
-      // hero 섹션
-      document.getElementById('hero-stars-count').textContent = formatNum(stars);
-      document.getElementById('hero-forks-count').textContent = formatNum(forks);
-      document.getElementById('hero-watchers-count').textContent = formatNum(watchers);
-
-      // github 카드 섹션
-      document.getElementById('gh-stars-count').textContent = formatNum(stars);
-      document.getElementById('gh-forks-count').textContent = formatNum(forks);
-      document.getElementById('gh-watchers-count').textContent = formatNum(watchers);
-
-      // loading 클래스 제거
-      ['gh-pill-stars','gh-pill-forks','gh-pill-watchers'].forEach(id => {
-        document.getElementById(id)?.classList.remove('loading');
-      });
-    }
-
-    // 캐시 확인
-    try {
-      const cached = sessionStorage.getItem(CACHE_KEY);
-      if (cached) {
-        const { data, ts } = JSON.parse(cached);
-        if (Date.now() - ts < CACHE_TTL) {
-          applyStats(data.stars, data.forks, data.watchers);
-          return;
-        }
-      }
-    } catch(e) {}
-
-    try {
-      let page = 1, stars = 0, forks = 0, watchers = 0;
-      while (true) {
-        const res = await fetch(
-          `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
-          { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-        );
-        if (!res.ok) break;
-        const repos = await res.json();
-        if (!repos.length) break;
-        repos.forEach(r => {
-          stars    += r.stargazers_count || 0;
-          forks    += r.forks_count      || 0;
-          watchers += r.watchers_count   || 0;
-        });
-        if (repos.length < 100) break;
-        page++;
-      }
-      applyStats(stars, forks, watchers);
-      // 캐시 저장
-      sessionStorage.setItem(CACHE_KEY, JSON.stringify({
-        data: { stars, forks, watchers }, ts: Date.now()
-      }));
-    } catch(err) {
-      // API 실패 시 기본값 표시
-      applyStats('?', '?', '?');
-    }
+    buildFilters(allGames);
+    renderGames(allGames);
+  } catch (err) {
+    grid.innerHTML = `
+      <div class="wg-error">
+        <div class="wg-error-icon">📡</div>
+        <div class="wg-error-msg">게임 목록을 불러올 수 없어요.</div>
+        <div class="wg-error-hint">${GAMES_JSON_URL}</div>
+      </div>`;
+    console.error('Games JSON load failed:', err);
   }
-  fetchGitHubStats();
-  document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 30;
-    const y = (e.clientY / window.innerHeight - 0.5) * 30;
-    document.querySelector('.orb-1').style.transform = `translate(${x}px, ${y}px)`;
-    document.querySelector('.orb-2').style.transform = `translate(${-x}px, ${-y}px)`;
-  });
+}
+loadGames();
+
+// ── 게임 모달 ──
+const modalBackdrop = document.getElementById('wg-modal-backdrop');
+const modalClose    = document.getElementById('wg-modal-close');
+const modalIframe   = document.getElementById('wg-iframe');
+const modalTitle    = document.getElementById('wg-modal-title');
+const modalGameName = document.getElementById('wg-modal-game-name');
+const modalNewWin   = document.getElementById('wg-modal-newwin');
+const modalFullscr  = document.getElementById('wg-modal-fullscreen');
+
+function openGameModal(game) {
+  modalIframe.src = game.url;
+  modalTitle.textContent = game.name;
+  modalGameName.textContent = game.name;
+  modalNewWin.href = game.url;
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGameModal() {
+  modalBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { modalIframe.src = ''; }, 300);
+}
+
+modalClose.addEventListener('click', closeGameModal);
+modalBackdrop.addEventListener('click', e => {
+  if (e.target === modalBackdrop) closeGameModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeGameModal();
+});
+
+modalFullscr.addEventListener('click', () => {
+  const frame = modalIframe;
+  if (frame.requestFullscreen) frame.requestFullscreen();
+  else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+  else if (frame.mozRequestFullScreen) frame.mozRequestFullScreen();
+});
 </script>
 </body>
 </html>

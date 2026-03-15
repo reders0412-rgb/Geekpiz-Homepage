@@ -1,0 +1,15 @@
+{
+  "games": [
+    {
+      "id": "playing-tag",
+      "name": "playing tag",
+      "description": "혼자 즐기는 술래잡기",
+      "thumbnail": "https://raw.githubusercontent.com/reders0412-rgb/Geekpiz-image/refs/heads/main/playing%20tag.png",
+      "url": "https://playing-tag.pcylove0412.workers.dev/",
+      "tags": ["playing tag"],
+      "version": "1.0",
+      "author": "Geekpiz",
+      "releaseDate": "2025-03-15"
+    }
+  ]
+}
