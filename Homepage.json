@@ -10,6 +10,17 @@
       "version": "1.0",
       "author": "Geekpiz",
       "releaseDate": "2025-03-15"
+    },
+    {
+      "id": "fps-shooter",
+      "name": "FPS Shooter",
+      "description": "빠른 반응을 요구하는 FPS 게임",
+      "thumbnail": "https://raw.githubusercontent.com/reders0412-rgb/Geekpiz-image/refs/heads/main/fps%20shooter.png",
+      "url": "https://withered-field-fa2e.pcylove0412.workers.dev/",
+      "tags": ["3D", "컴퓨터"],
+      "version": "1.0",
+      "author": "Geekpiz",
+      "releaseDate": "2025-03-18"
     }
   ]
 }
