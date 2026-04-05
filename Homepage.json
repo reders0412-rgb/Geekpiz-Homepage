@@ -6,7 +6,7 @@
       "description": "혼자 즐기는 술래잡기",
       "thumbnail": "https://raw.githubusercontent.com/Geekpiz/Geekpiz-image/refs/heads/main/playing%20tag.png",
       "url": "https://playing-tag.pcylove0412.workers.dev/",
-      "tags": ["2D", "모바일", "컴퓨터"],
+      "tags": ["2D", "모바일", "PC"],
       "version": "1.0",
       "author": "Geekpiz",
       "releaseDate": "2025-03-15"
@@ -17,10 +17,21 @@
       "description": "빠른 반응을 요구하는 FPS 게임",
       "thumbnail": "https://github.com/Geekpiz/Geekpiz-image/blob/main/FPS-Shooter.png?raw=true",
       "url": "https://withered-field-fa2e.pcylove0412.workers.dev/",
-      "tags": ["3D", "컴퓨터"],
+      "tags": ["3D", "PC"],
       "version": "1.0",
       "author": "Geekpiz",
       "releaseDate": "2025-03-18"
+    },
+    {
+      "id": "top-soldier",
+      "name": "top soldier",
+      "description": "최고의 전사가 되세요!!",
+      "thumbnail": "",
+      "url": "https://white-firefly-4bf0.pcylove0412.workers.dev/",
+      "tags": ["2D", "모바일", "topdown"],
+      "version": "1.0",
+      "author": "Geekpiz",
+      "releaseDate": "2025-04-05"
     }
   ]
 }
