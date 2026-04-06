@@ -1,0 +1,156 @@
+{
+  "apps": [
+    {
+      "id": "geekpiz-launcher",
+      "name": "Geekpiz Launcher",
+      "description": "긱피즈 게임 및 앱을 한 곳에서 관리하는 공식 런처. 설치, 업데이트, 실행까지 원스톱.",
+      "icon": "",
+      "tags": ["Launcher", "Official"],
+      "thumbnail": "",
+      "latestVersion": "2.4",
+      "platforms": {
+        "windows": {
+          "url": "https://github.com/Geekpiz/Geekpiz-launcher/releases/download/2.4/GeekpizLauncher.zip",
+          "size": "68 MB",
+          "filename": "GeekpizLauncher.zip"
+        },
+        "mac": null,
+        "linux": null
+      },
+      "versions": [
+        {
+          "version": "2.4",
+          "date": "2025-03-21",
+          "title": "긱피즈 런처 2.4 업데이트",
+          "notes": ["바로가기 기능 추가"],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/Geekpiz-launcher/releases/download/2.4/GeekpizLauncher.zip",
+              "size": "68 MB"
+            }
+          }
+        },
+        {
+          "version": "1.0",
+          "date": "2026-01-30",
+          "title": "런처 1.0 출시",
+          "notes": [
+            "긱피즈 런처 첫 공개",
+            "게임 & 앱 다운로드 기능 추가",
+            "Windows 지원 시작"
+          ],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/Geekpiz-launcher/releases/download/1.0/GeekpizLauncher.zip",
+              "size": "55 MB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gk-editor",
+      "name": "GKW Editor",
+      "description": "웹 기반 씬 에디터. Fabric.js 기반의 컴포넌트 & 노드 시스템, 키프레임 레코딩 지원.",
+      "icon": "",
+      "tags": ["Editor", "Tool"],
+      "thumbnail": "",
+      "latestVersion": "3.0",
+      "platforms": {
+        "windows": {
+          "url": "https://github.com/Geekpiz/GKW-Editor/releases/download/3.0/GKWEditor.zip",
+          "size": "42 MB",
+          "filename": "GKWEditor.zip"
+        },
+        "mac": null,
+        "linux": null
+      },
+      "versions": [
+        {
+          "version": "3.0",
+          "date": "2025-12-10",
+          "title": "GKW Editor v3 출시",
+          "notes": [
+            "WebView2 데스크탑 버전 추가",
+            "다중 씬 관리 지원",
+            "KO/EN 언어 전환",
+            "키프레임 레코딩 기능"
+          ],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/GKW-Editor/releases/download/3.0/GKWEditor.zip",
+              "size": "42 MB"
+            }
+          }
+        },
+        {
+          "version": "2.0",
+          "date": "2025-08-05",
+          "title": "GKW Editor v2",
+          "notes": [
+            "컴포넌트 시스템 추가",
+            "시그널 시스템 도입",
+            "UI 전면 개편"
+          ],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/GKW-Editor/releases/download/2.0/GKWEditor.zip",
+              "size": "35 MB"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fastporter",
+      "name": "FastPorter",
+      "description": "WPF 기반 빠른 파일 관리 도구. 드래그앤드롭, 우클릭 컨텍스트 메뉴, Bandizip 스타일 진행률 표시.",
+      "icon": "",
+      "tags": ["Utility", "Tool"],
+      "thumbnail": "",
+      "latestVersion": "1.2",
+      "platforms": {
+        "windows": {
+          "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.2/FastPorter.zip",
+          "size": "12 MB",
+          "filename": "FastPorter.zip"
+        },
+        "mac": null,
+        "linux": null
+      },
+      "versions": [
+        {
+          "version": "1.2",
+          "date": "2026-03-10",
+          "title": "FastPorter 1.2",
+          "notes": [
+            "관리자 권한 매니페스트 추가 (무결성 레벨 픽스)",
+            "우클릭 컨텍스트 메뉴 통합",
+            "Bandizip 스타일 진행률 표시 UI"
+          ],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.2/FastPorter.zip",
+              "size": "12 MB"
+            }
+          }
+        },
+        {
+          "version": "1.0",
+          "date": "2026-01-15",
+          "title": "FastPorter 첫 출시",
+          "notes": [
+            "WPF 파일 관리 도구 최초 공개",
+            "Windows Explorer 드래그앤드롭 지원"
+          ],
+          "platforms": {
+            "windows": {
+              "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.0/FastPorter.zip",
+              "size": "10 MB"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
