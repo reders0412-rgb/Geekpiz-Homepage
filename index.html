@@ -2162,8 +2162,8 @@
     });
 
     // ── APPS & DOWNLOADS ──
-    const APPS_JSON_URL = 'https://raw.githubusercontent.com/Geekpiz/Geekpiz-Homepage/refs/heads/main/apps.json';
-    const CHANGELOG_JSON_URL = 'https://raw.githubusercontent.com/Geekpiz/Geekpiz-Homepage/refs/heads/main/changelog.json';
+    const APPS_JSON_URL = 'apps.json';
+    const CHANGELOG_JSON_URL = 'changelog.json';
 
     let allApps = [];
 
@@ -2199,7 +2199,7 @@
       }
       if (!version && app.versions.length > 0) version = app.versions[0].version;
 
-      const verData = app.versions.find(v => v.version === version);
+      const verData = app.versions.find(v => String(v.version) === String(version));
       if (verData && verData.url) {
         window.location.href = verData.url;
       }
@@ -2229,14 +2229,14 @@
     <div class="dl-controls">
       <div class="dl-ver-row">
         <div class="dl-select-wrapper">
-          <select class="dl-select" onchange="handleVersionChange('${app.id}', this.value)">
+          <select class="dl-select" onchange="handleVersionChange(this, '${app.id}')">
             ${optionsHtml}
           </select>
         </div>
         <button class="btn-notes" onclick="showPatchNotes(this, '${app.id}')">패치 노트</button>
       </div>
       <div class="dl-action-row">
-        <button class="btn-dl ${!latestVer ? 'disabled' : ''}" onclick="downloadApp(this, '${app.id}')">
+        <button class="btn-dl ${(!latestVer || !latestVer.url) ? 'disabled' : ''}" onclick="downloadApp(this, '${app.id}')">
           Windows 다운로드
         </button>
       </div>
@@ -2245,19 +2245,21 @@
       return card;
     }
 
-    function handleVersionChange(appId, version) {
+    function handleVersionChange(selectElem, appId) {
+      const version = selectElem.value;
       const app = allApps.find(a => a.id === appId);
       if (!app) return;
-      const verData = app.versions.find(v => v.version === version);
+      const verData = app.versions.find(v => String(v.version) === String(version));
       if (!verData) return;
 
-      const buttons = document.querySelectorAll(`button[onclick*="'${appId}'"]`);
-      buttons.forEach(btn => {
-        if (btn.classList.contains('btn-dl')) {
-          if (verData.url) btn.classList.remove('disabled');
-          else btn.classList.add('disabled');
-        }
-      });
+      const card = selectElem.closest('.dl-card');
+      if (!card) return;
+      
+      const btn = card.querySelector('.btn-dl');
+      if (btn) {
+        if (verData.url) btn.classList.remove('disabled');
+        else btn.classList.add('disabled');
+      }
     }
 
     function showPatchNotes(btnElement, appId) {
@@ -2419,7 +2421,7 @@
 
     // ★ 여기에 실제 games.json raw URL을 넣으세요 ★
     // 예: https://raw.githubusercontent.com/reders0412-rgb/<레포이름>/main/games.json
-    const GAMES_JSON_URL = 'https://raw.githubusercontent.com/Geekpiz/Geekpiz-Homepage/refs/heads/main/Homepage.json';
+    const GAMES_JSON_URL = 'Homepage.json';
 
     let allGames = [];
     let activeTag = 'all';
