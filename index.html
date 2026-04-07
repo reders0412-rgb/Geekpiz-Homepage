@@ -548,6 +548,10 @@
       font-size: 0.8rem;
       appearance: none;
       cursor: none;
+      min-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .dl-select:focus {
@@ -1333,6 +1337,8 @@
       font-family: 'Space Mono', monospace;
       font-size: 0.66rem;
       color: var(--muted);
+      max-width: 180px;
+      white-space: nowrap;
     }
 
     .wg-name {
@@ -2213,7 +2219,7 @@
       const iconSrc = app.icon && app.icon.trim() !== "" ? app.icon : '로고.png';
 
       const optionsHtml = (app.versions || []).map((v, idx) =>
-        `<option value="${v.version}" ${idx === 0 ? 'selected' : ''}>Version ${v.version} (${v.date})</option>`
+        `<option value="${v.version}" ${idx === 0 ? 'selected' : ''}>V ${v.version} (${v.date})</option>`
       ).join('');
 
       const latestVer = app.versions && app.versions.length > 0 ? app.versions[0] : null;
@@ -2466,7 +2472,7 @@
     <div class="wg-body">
       <div class="wg-meta-row">
         <div class="wg-tags">${tagsHtml}</div>
-        <span class="wg-version">${game.version ? 'v' + game.version : ''}</span>
+        <span class="wg-version">${game.version ? 'V' + game.version : ''}</span>
       </div>
       <div class="wg-name">${game.name}</div>
       <div class="wg-desc">${game.description || ''}</div>
@@ -2488,7 +2494,7 @@
       grid.innerHTML = '';
 
       if (!games.length) {
-        grid.innerHTML = `<div class="wg-empty">이 카테고리에 게임이 없어요 👾</div>`;
+        grid.innerHTML = `<div class="wg-empty">이 카테고리에 게임이 없어요.</div>`;
         return;
       }
 

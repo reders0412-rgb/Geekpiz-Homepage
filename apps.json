@@ -24,45 +24,10 @@
       "versions": [
         {
           "version": "1.0",
-          "date": "2026-01-15",
-          "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.0/FastPorter.zip",
+          "date": "2026-05-??",
+          "url": "",
           "notes": [
-            "WPF 파일 관리 도구 최초 공개",
-            "Windows Explorer 드래그앤드롭 지원"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "a",
-      "name": "a",
-      "description": "WPF 기반 빠른 파일 관리 도구. 드래그앤드롭, 우클릭 컨텍스트 메뉴, Bandizip 스타일 진행률 표시.",
-      "icon": "",
-      "versions": [
-        {
-          "version": "1.0",
-          "date": "2026-01-15",
-          "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.0/FastPorter.zip",
-          "notes": [
-            "WPF 파일 관리 도구 최초 공개",
-            "Windows Explorer 드래그앤드롭 지원"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s",
-      "name": "s",
-      "description": "WPF 기반 빠른 파일 관리 도구. 드래그앤드롭, 우클릭 컨텍스트 메뉴, Bandizip 스타일 진행률 표시.",
-      "icon": "",
-      "versions": [
-        {
-          "version": "1.0",
-          "date": "2026-01-15",
-          "url": "https://github.com/Geekpiz/FastPorter/releases/download/1.0/FastPorter.zip",
-          "notes": [
-            "WPF 파일 관리 도구 최초 공개",
-            "Windows Explorer 드래그앤드롭 지원"
+            "준비중"
           ]
         }
       ]
