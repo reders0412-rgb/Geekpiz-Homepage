@@ -307,14 +307,19 @@
       gap: 1.2rem;
       max-width: 900px;
     }
+    .dl-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+    }
     .dl-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 1.8rem;
-      display: flex; flex-direction: column; gap: 1rem;
-      text-decoration: none; color: var(--text);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column; gap: 1.2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
       position: relative; overflow: hidden;
     }
     .dl-card::before {
@@ -323,36 +328,92 @@
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.3s;
+      transition: transform 0.35s;
     }
     .dl-card:hover::before { transform: scaleX(1); }
     .dl-card:hover {
       border-color: rgba(0,245,196,0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
     }
-    .dl-icon { font-size: 2rem; line-height: 1; }
-    .dl-os {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.06em;
+    .dl-header { display: flex; align-items: center; gap: 1rem; }
+    .dl-icon { font-size: 2.2rem; line-height: 1; min-width: 44px; display: flex; justify-content: center; }
+    .dl-info { flex: 1; }
+    .dl-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.04em; color: var(--text); }
+    .dl-tags { display: flex; gap: 0.4rem; margin-top: 0.2rem; }
+    .dl-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; min-height: 3.2rem; }
+    
+    .dl-controls {
+      display: flex; flex-direction: column; gap: 0.8rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
     }
-    .dl-meta {
-      font-size: 0.78rem;
+    .dl-ver-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .dl-select-wrapper { flex: 1; position: relative; }
+    .dl-select {
+      width: 100%;
+      padding: 0.5rem 0.8rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      appearance: none;
+      cursor: none;
+    }
+    .dl-select:focus { outline: none; border-color: var(--accent); }
+    .dl-select-wrapper::after {
+      content: '▼';
+      position: absolute; right: 0.8rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.6rem; color: var(--muted);
+      pointer-events: none;
+    }
+    
+    .btn-notes {
+      padding: 0.5rem 0.8rem;
+      background: rgba(123,97,255,0.1);
+      border: 1px solid rgba(123,97,255,0.3);
+      color: var(--accent2);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: 'Space Mono', monospace;
+      cursor: none;
+      transition: all 0.2s;
+    }
+    .btn-notes:hover { background: rgba(123,97,255,0.2); border-color: var(--accent2); }
+
+    .dl-action-row { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.4rem; }
+    .btn-dl {
+      flex: 1;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.8rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,245,196,0.2);
+    }
+    .btn-dl:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,245,196,0.4); }
+    .btn-dl.disabled { opacity: 0.5; pointer-events: none; filter: grayscale(1); }
+    
+    .dl-meta-info {
+      font-size: 0.72rem;
       color: var(--muted);
       font-family: 'Space Mono', monospace;
+      display: flex; justify-content: space-between;
     }
-    .dl-badge {
-      display: inline-block;
-      padding: 0.25rem 0.7rem;
-      background: rgba(0,245,196,0.1);
-      border: 1px solid rgba(0,245,196,0.3);
-      color: var(--accent);
-      border-radius: 100px;
-      font-size: 0.72rem;
-      font-family: 'Space Mono', monospace;
-      align-self: flex-start;
-    }
+    
+    /* 패치 노트 모달 스타일 */
+    .pn-modal-body { padding: 1.5rem; color: var(--text); line-height: 1.7; }
+    .pn-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent); }
+    .pn-list { list-style: none; margin-top: 1rem; }
+    .pn-list li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.9rem; }
+    .pn-list li::before { content: '•'; color: var(--accent2); font-weight: bold; }
+
 
     /* ── FEATURES ── */
     #features {
@@ -996,7 +1057,7 @@
   </h1>
   <p class="hero-sub">빠르고 강력하게 — 당신의 워크플로우를 한 단계 업그레이드하세요.</p>
   <div class="hero-actions">
-    <a href="#download" class="btn-primary">⬇ 런처 다운로드</a>
+    <a href="#download" class="btn-primary" id="hero-dl-btn">⬇ 런처 다운로드</a>
     <a href="https://github.com/Geekpiz" target="_blank" rel="noopener" class="btn-ghost">GitHub 바로가기</a>
   </div>
   <div class="hero-gh-stats">
@@ -1019,24 +1080,13 @@
 <!-- DOWNLOAD -->
 <section id="download">
   <div class="section-tag">// DOWNLOAD</div>
-  <h2 class="section-title">런처 다운로드</h2>
-  <p class="section-sub">클릭 한 번으로 설치 끝.</p>
-  <div class="dl-cards" style="max-width:320px;">
-    <a href="https://github.com/Geekpiz/Geekpiz-launcher/releases/download/2.4/GeekpizLauncher.zip"
-       class="dl-card">
-      <div class="dl-icon" style="font-size:2.2rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="40" height="40">
-          <rect x="2" y="2" width="40" height="40" rx="4" fill="#F25022"/>
-          <rect x="46" y="2" width="40" height="40" rx="4" fill="#7FBA00"/>
-          <rect x="2" y="46" width="40" height="40" rx="4" fill="#00A4EF"/>
-          <rect x="46" y="46" width="40" height="40" rx="4" fill="#FFB900"/>
-        </svg>
-      </div>
-      <div class="dl-os">Windows</div>
-      <div class="dl-meta">Geekpizlauncher.exe · ~68 MB</div>
-      <div class="dl-meta">Windows 10 / 11 (x64)</div>
-      <div class="dl-badge">Stable</div>
-    </a>
+  <h2 class="section-title">앱 & 컬렉션</h2>
+  <p class="section-sub">필요한 도구를 선택하고 최신 버전 혹은 이전 버전을 자유롭게 다운로드하세요.</p>
+  <div class="dl-cards" id="dl-grid">
+    <div class="wg-loading">
+      <div class="wg-spinner"></div>
+      <span>앱 목록 불러오는 중...</span>
+    </div>
   </div>
 </section>
 
@@ -1165,32 +1215,10 @@
 <section id="changelog" style="max-width:100%;padding:6rem 4rem;">
   <div class="section-tag">// CHANGELOG</div>
   <h2 class="section-title">업데이트 내역</h2>
-  <div class="changelog-list">
-    <div class="changelog-item reveal">
-      <div>
-        <div class="cl-version">v2.4</div>
-        <div class="cl-date">2025-03-21</div>
-      </div>
-      <div>
-        <div class="cl-title">긱피즈 런처 2.4 업데이트</div>
-        <ul class="cl-items">
-          <li>바로가기 기능 추가</li>
-        </ul>
-      </div>
-    </div>
-    <div class="changelog-item reveal">
-      <div>
-        <div class="cl-version">v1.0</div>
-        <div class="cl-date">2026-01-30</div>
-      </div>
-      <div>
-        <div class="cl-title">런처 1.0 출시</div>
-        <ul class="cl-items">
-          <li>긱피즈 런처 첫 공개</li>
-          <li>게임 & 앱 다운로드 기능 추가</li>
-          <li>Windows 지원 시작</li>
-        </ul>
-      </div>
+  <div class="changelog-list" id="changelog-list">
+    <div class="wg-loading">
+      <div class="wg-spinner"></div>
+      <span>업데이트 내역 불러오는 중...</span>
     </div>
   </div>
 </section>
@@ -1347,6 +1375,201 @@ document.addEventListener('mousemove', e => {
   document.querySelector('.orb-1').style.transform = `translate(${x}px, ${y}px)`;
   document.querySelector('.orb-2').style.transform = `translate(${-x}px, ${-y}px)`;
 });
+
+// ── APPS & DOWNLOADS ──
+const APPS_JSON_URL = 'apps.json';
+const CHANGELOG_JSON_URL = 'changelog.json';
+
+let allApps = [];
+
+function buildAppCard(app) {
+  const card = document.createElement('div');
+  card.className = 'dl-card reveal';
+  card.id = `app-${app.id}`;
+  
+  const latestVer = app.versions[0];
+  const tagsHtml = (app.tags || []).map(t => `<span class="wg-tag">${t}</span>`).join('');
+  
+  // 버전 옵션 생성
+  const optionsHtml = app.versions.map((v, idx) => 
+    `<option value="${v.version}" ${idx === 0 ? 'selected' : ''}>Version ${v.version} (${v.date})</option>`
+  ).join('');
+
+  card.innerHTML = `
+    <div class="dl-header">
+      <div class="dl-icon">${app.icon || '📦'}</div>
+      <div class="dl-info">
+        <div class="dl-name">${app.name}</div>
+        <div class="dl-tags">${tagsHtml}</div>
+      </div>
+    </div>
+    <div class="dl-desc">${app.description}</div>
+    <div class="dl-controls">
+      <div class="dl-ver-row">
+        <div class="dl-select-wrapper">
+          <select class="dl-select" onchange="handleVersionChange('${app.id}', this.value)">
+            ${optionsHtml}
+          </select>
+        </div>
+        <button class="btn-notes" onclick="showPatchNotes('${app.id}')">패치 노트</button>
+      </div>
+      <div class="dl-action-row">
+        <a href="${latestVer.platforms.windows?.url || '#'}" class="btn-dl ${!latestVer.platforms.windows ? 'disabled' : ''}" id="dl-btn-${app.id}">
+          Windows 다운로드
+        </a>
+      </div>
+      <div class="dl-meta-info">
+        <span id="dl-filename-${app.id}">${latestVer.platforms.windows?.filename || app.name}</span>
+        <span id="dl-size-${app.id}">${latestVer.platforms.windows?.size || 'Unknown size'}</span>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function handleVersionChange(appId, version) {
+  const app = allApps.find(a => a.id === appId);
+  if (!app) return;
+  const verData = app.versions.find(v => v.version === version);
+  if (!verData) return;
+
+  const dlBtn = document.getElementById(`dl-btn-${appId}`);
+  const filenameEl = document.getElementById(`dl-filename-${appId}`);
+  const sizeEl = document.getElementById(`dl-size-${appId}`);
+
+  if (verData.platforms.windows) {
+    dlBtn.href = verData.platforms.windows.url;
+    dlBtn.classList.remove('disabled');
+    filenameEl.textContent = verData.platforms.windows.filename || app.name;
+    sizeEl.textContent = verData.platforms.windows.size || '';
+  } else {
+    dlBtn.href = '#';
+    dlBtn.classList.add('disabled');
+    filenameEl.textContent = '지원되지 않는 버전';
+    sizeEl.textContent = '';
+  }
+}
+
+function showPatchNotes(appId) {
+  const app = allApps.find(a => a.id === appId);
+  if (!app) return;
+  const select = document.querySelector(`#app-${appId} .dl-select`);
+  const version = select.value;
+  const verData = app.versions.find(v => v.version === version);
+  if (!verData) return;
+
+  const notesHtml = (verData.notes || []).map(n => `<li>${n}</li>`).join('');
+  
+  // 패치 노트 표시를 위해 전역 모달 재활용
+  modalIframe.style.display = 'none';
+  const modalFrame = document.querySelector('.wg-modal-frame');
+  
+  // 이전 패치 노트 제거
+  const oldPn = modalFrame.querySelector('.pn-modal-body');
+  if (oldPn) oldPn.remove();
+
+  const pnBody = document.createElement('div');
+  pnBody.className = 'pn-modal-body';
+  pnBody.innerHTML = `
+    <div class="pn-title">${app.name} - ${version} 업데이트</div>
+    <div style="font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem;">릴리즈 날짜: ${verData.date}</div>
+    <p style="font-weight:600; margin-bottom:0.5rem;">${verData.title || ''}</p>
+    <ul class="pn-list">${notesHtml}</ul>
+  `;
+  modalFrame.appendChild(pnBody);
+  
+  modalTitle.textContent = 'Patch Notes';
+  modalGameName.textContent = `${app.name} v${version}`;
+  modalNewWin.style.display = 'none';
+  modalFullscr.style.display = 'none';
+  
+  modalBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── CHANGELOG ──
+async function loadChangelog() {
+  const list = document.getElementById('changelog-list');
+  try {
+    const res = await fetch(CHANGELOG_JSON_URL);
+    if (!res.ok) throw new Error();
+    const json = await res.json();
+    const data = json.changelog || [];
+
+    // 규칙: v1.0은 항상 표시 + 최신 2개 표시
+    const v10 = data.find(item => item.version === '1.0');
+    const others = data.filter(item => item.version !== '1.0');
+    const latest2 = others.slice(0, 2);
+    
+    // 표시할 목록 합치기 (최신 순)
+    // 최신 2개가 v1.0보다 이후라면 위에, 아니면 알아서 정렬
+    // 여기서는 최신 2개 + v1.0 (v1.0이 이미 최신 2개에 포함되어 있다면 중복 방지)
+    let displayList = [...latest2];
+    if (v10 && !displayList.find(d => d.version === '1.0')) {
+      displayList.push(v10);
+    }
+
+    list.innerHTML = '';
+    displayList.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'changelog-item reveal';
+      const itemsHtml = (item.items || []).map(i => `<li>${i}</li>`).join('');
+      div.innerHTML = `
+        <div>
+          <div class="cl-version">v${item.version}</div>
+          <div class="cl-date">${item.date}</div>
+        </div>
+        <div>
+          <div class="cl-title">${item.title}</div>
+          <ul class="cl-items">${itemsHtml}</ul>
+        </div>
+      `;
+      list.appendChild(div);
+      observer.observe(div);
+    });
+  } catch (err) {
+    list.innerHTML = '<div class="wg-error">업데이트 내역을 불러올 수 없습니다.</div>';
+  }
+}
+
+async function loadApps() {
+  const grid = document.getElementById('dl-grid');
+  try {
+    const res = await fetch(APPS_JSON_URL);
+    if (!res.ok) throw new Error();
+    allApps = (await res.json()).apps || [];
+    
+    grid.innerHTML = '';
+    allApps.forEach(app => {
+      const card = buildAppCard(app);
+      grid.appendChild(card);
+      observer.observe(card);
+    });
+
+    // Hero 섹션 버튼 업데이트 (Geekpiz Launcher 최신 버전)
+    const launcher = allApps.find(a => a.id === 'geekpiz-launcher');
+    if (launcher) {
+      const latest = launcher.versions[0];
+      const heroBtn = document.getElementById('hero-dl-btn');
+      if (heroBtn && latest.platforms.windows) {
+        heroBtn.href = latest.platforms.windows.url;
+      }
+    }
+    
+    // 커서 이벤트 등록
+    document.querySelectorAll('.dl-card a, .dl-card button, .dl-card select').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.2)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    });
+
+  } catch (err) {
+    grid.innerHTML = '<div class="wg-error">앱 목록을 불러올 수 없습니다.</div>';
+  }
+}
+
+// 초기화
+loadApps();
+loadChangelog();
 
 // ══════════════════════════════════════
 // WEB GAMES — GitHub JSON 불러오기
@@ -1519,10 +1742,16 @@ const modalNewWin   = document.getElementById('wg-modal-newwin');
 const modalFullscr  = document.getElementById('wg-modal-fullscreen');
 
 function openGameModal(game) {
+  modalIframe.style.display = 'block';
+  const oldPn = document.querySelector('.pn-modal-body');
+  if (oldPn) oldPn.remove();
+  
   modalIframe.src = game.url;
   modalTitle.textContent = game.name;
   modalGameName.textContent = game.name;
   modalNewWin.href = game.url;
+  modalNewWin.style.display = 'inline-flex';
+  modalFullscr.style.display = 'inline-flex';
   modalBackdrop.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
